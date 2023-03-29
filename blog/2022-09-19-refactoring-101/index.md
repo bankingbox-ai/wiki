@@ -46,6 +46,12 @@ Refactorizamos por una serie de razones, intentaré nombrar algunas de ellas:
 Mantener el refactor como práctica cotidiana nos ayuda a mantener un buen estándar de calidad. Refactorizar es parte de nuestra cultura: invertimos en
 mejorar constantemente la calidad.
 
+## Code smells
+
+Como dice Kent Beck y parafrasea Martin Fowler, existen ciertas
+pistas que nos van a ayudar cuándo el código es mejorable. El Tío Bob
+dice que la calidad del código se mide en la cantidad de *whatthefucks* que dices cuando lo revisas.
+
 ## La mentira del gran refactor 🙊
 
 Un refactor nunca será una mejora en sí mismo. La misma definición, nuevamente, lo dice: "sin alterar
@@ -151,9 +157,3 @@ dinámicas puede ser muy difícil resolver los conflictos con la rama principal
 - El refactor debiera ser una actividad colectiva: coméntalo con tu equipo,
 coméntalo con el equipo completo, transparéntalo, comparte la estrategia,
 invita a otro a acompañarte en el refactor, etc
-
-## Code smells
-
-Como dice Kent Beck y parafrasea Martin Fowler, existen ciertas
-pistas que nos van a ayudar a determinar hacia dónde puede
-mejorarse el código

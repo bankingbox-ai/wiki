@@ -1,6 +1,6 @@
 ---
-title: Flujo de trabajo de Lendaas
-slug: lendaas-workflow
+title: Flujo de trabajo ideal
+slug: ideal-workflow
 authors: [benja]
 tags: [tooling,guide]
 ---

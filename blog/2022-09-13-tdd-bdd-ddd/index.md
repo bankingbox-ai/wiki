@@ -1,5 +1,5 @@
 ---
-# slug: tdd-bdd-ddd
+slug: tdd-bdd-ddd
 title: Desarrollando con TDD, BDD, DDD 🥲
 authors: [benja]
 image: ./assets/cat-dev.jpg
