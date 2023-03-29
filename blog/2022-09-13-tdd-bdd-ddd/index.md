@@ -132,7 +132,7 @@ existe cierta linealidad en ellos. Los agruparé en pequeños _releases_
 
 Comenzaré mi desarrollo con dos piezas claves:
 
-- Programaré los criterios de aceptación como [tests orientados al funcionamiento](blog/testing-101/#a-orientados-al-funcionamiento-black-box) [`BDD` y `TDD`, test fallando (🟥)]
+- Programaré los criterios de aceptación como [tests orientados al funcionamiento](./testing-101/#a-orientados-al-funcionamiento-black-box) [`BDD` y `TDD`, test fallando (🟥)]
 - Configuraré y desplegaré [feature-toggles](https://en.wikipedia.org/wiki/Feature_toggle) necesarios para que mi incremento pueda vivir en producción
 sin entorpecer el funcionamiento del resto del software
 

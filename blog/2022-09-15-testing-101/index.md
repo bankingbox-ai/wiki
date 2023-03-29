@@ -46,7 +46,7 @@ Desarrollo basado/guiado/orientado/dirigido por...
 Si bien son acercamientos conceptuales, de alto nivel, conseguir combinarlas optimiza el proceso de ensayo/error y mejora continua
 que ocurre (o debiera ocurrir) naturalmente cuando desarrollamos.
 
-[Aquí](blog/tdd-bdd-ddd) puedes leer más acerca de cómo abordar estas estrategias conjuntamente.
+[Aquí](./tdd-bdd-ddd) puedes leer más acerca de cómo abordar estas estrategias conjuntamente.
 
 ## Tipos de test 🧰
 
