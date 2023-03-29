@@ -50,7 +50,7 @@ mejorar constantemente la calidad.
 
 Como dice Kent Beck y parafrasea Martin Fowler, existen ciertas
 pistas que nos van a ayudar cuándo el código es mejorable. El Tío Bob
-dice que la calidad del código se mide en la cantidad de *whatthefucks* que dices cuando lo revisas.
+dice que la calidad del código se mide en la cantidad de _whatthefucks_ que dices cuando lo revisas.
 
 ## La mentira del gran refactor 🙊
 
