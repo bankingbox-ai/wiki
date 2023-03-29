@@ -1,4 +1,4 @@
-// @source: https://github.com/marketplace/actions/deploy-to-github-pages
+# @source: https://github.com/marketplace/actions/deploy-to-github-pages
 name: Build and Deploy
 on: [push]
 permissions:
