@@ -1,0 +1,8 @@
+{
+  "label": "Enciclopedia",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "En esta sección ahondaremos en los conceptos que hay detrás del producto, explicitando qué son y cómo fueron definidos"
+  }
+}
