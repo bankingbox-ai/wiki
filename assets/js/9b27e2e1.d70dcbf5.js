@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[2675],{9538:s=>{s.exports=JSON.parse('{"label":"gu\xedas","permalink":"/wiki/blog/tags/guias","allTagsPath":"/wiki/blog/tags","count":7}')}}]);
