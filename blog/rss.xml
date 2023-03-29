@@ -4,7 +4,7 @@
         <title>My Site Blog</title>
         <link>https://your-docusaurus-test-site.com/blog</link>
         <description>My Site Blog</description>
-        <lastBuildDate>Wed, 29 Mar 2023 05:38:58 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Mar 2023 05:47:02 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>es</language>
@@ -12,7 +12,7 @@
             <title><![CDATA[Desarrollando con TDD, BDD, DDD 🥲]]></title>
             <link>https://your-docusaurus-test-site.com/blog/tdd-bdd-ddd</link>
             <guid>https://your-docusaurus-test-site.com/blog/tdd-bdd-ddd</guid>
-            <pubDate>Wed, 29 Mar 2023 05:38:58 GMT</pubDate>
+            <pubDate>Wed, 29 Mar 2023 05:47:02 GMT</pubDate>
             <description><![CDATA[cat dev]]></description>
             <content:encoded><![CDATA[<p><img loading="lazy" alt="cat dev" src="/assets/images/cat-dev-eb0a3bfdff6b3456304a7f1060cb1125.jpg" width="1103" height="714" class="img_ev3q"></p><p>Paseando un poco en Google, es muy fácil encontrar una tremenda cantidad de Gurús que prometen
 mejorar tu forma de desarrollar. Lo más probable es que existan tantas estrategias como personas en el planeta, y que cada uno deba experimentar hasta encontrar la propia.</p><p>En este artículo explicaré cómo podrían utilizarse <code>BDD</code> y <code>DDD</code> en conjunto con <code>TDD</code>. Puede ponerse medio arenoso el camino
