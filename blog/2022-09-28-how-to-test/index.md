@@ -5,7 +5,7 @@ authors: benja
 tags: [guías, testing]
 ---
 
-En Lendaas trabajamos con TDD (o lo intentamos 🤓), [aquí](/testing-101) puedes leer un poco más acerca
+En Lendaas trabajamos con TDD (o lo intentamos 🤓), [aquí](blog/testing-101) puedes leer un poco más acerca
 de nuestra estrategia global. Suena bonito, pero en la práctica
 escribir test de distintas naturalezas antes de codear no es tan
 sencillo.
@@ -160,7 +160,7 @@ describe('./api.js', () => {
 
 :::info
 
-Tal como comenté en [este](/testing-101#b1-unitarios) artículo que
+Tal como comenté en [este](blog/testing-101#b1-unitarios) artículo que
 introduce los tipos de test, los unitarios persiguen la idea de probar
 exclusivamente MIS líneas de código. Hacer __mocks__ a veces no parece
 necesario, pero es la herramienta que nos permite aislar cualquier comportamiento

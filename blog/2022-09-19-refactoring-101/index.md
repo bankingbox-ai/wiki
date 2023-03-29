@@ -80,7 +80,7 @@ crítica acerca de cómo mejorar una pieza de código o puedes pedir un _code-re
 ### Pair programming
 
 Dos cabeza piensan mejor que una, siempre será una experiencia
-enriquecedora trabajar con otro. Puedes consultar [este artículo](/pair-programming)
+enriquecedora trabajar con otro. Puedes consultar [este artículo](blog/pair-programming)
 con más información acerca de cómo nos acercamos a esta práctica.
 
 ### Estudiar y leer

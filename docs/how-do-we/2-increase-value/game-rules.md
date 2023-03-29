@@ -32,7 +32,7 @@ Un incremento podrá ser construido si solo sí está _ready_. Esto significa qu
 
 - tiene un _outcome_ escrito y definido el indicador del `dashboard` que lo medirá
 - tiene un `archetype` de usuario definido y explícito en su descripción
-- tiene criterios de aceptación que fueron concebidos como [test orientados a la funcionalidad](https://blog.lendaas.com/testing-101#a-orientados-al-funcionamiento-black-box)
+- tiene criterios de aceptación que fueron concebidos como [test orientados a la funcionalidad](blog/testing-101#a-orientados-al-funcionamiento-black-box)
 - tiene explícito cómo interactúan los PBI a través de un _story-mapping_
 - tiene una maqueta de baja fidelidad del diseño discutida entre interesados
 - tiene un [_user-flow-diagram_](https://creately.com/blog/diagrams/user-flow-diagram/) consensuado que dé cuenta de la `UX`
@@ -223,7 +223,7 @@ Acordamos mantener estos conceptos como guías teóricas para mantener y continu
 
 - Los test de mutación no siempre se justifican. Recomendamos implementarlos en servicios particularmente
 sensibles, donde el dominio sea más complicado de lo usual
-- Para más detalle y profundización, revisar [Taller de testing](https://creditu-team.gitlab.io/slides/testing.html), [TDD](https://creditu-team.gitlab.io/slides/tdd.html), [Introducción al testing](https://blog.lendaas.com/testing-101/)
+- Para más detalle y profundización, revisar [Taller de testing](https://creditu-team.gitlab.io/slides/testing.html), [TDD](https://creditu-team.gitlab.io/slides/tdd.html), [Introducción al testing](blog/testing-101/)
 - Para realizar test en las componentes del design system, se recomienda revisar esta [referencia](https://storybook.js.org/docs/react/writing-tests/introduction)
 :::
 

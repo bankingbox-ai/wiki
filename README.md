@@ -1,41 +1,39 @@
-# Website
+# wiki
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+Contruida con [Docusaurus](https://docusaurus.io/), es el lugar donde vive nuestra documentación y blog.
 
-### Installation
+## Instala dependencias
 
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
+``` sh
+npm install
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Arranca en local
 
-### Build
-
-```
-$ yarn build
+``` sh
+npm run start
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+Arranca un servidor local con hot reload.
 
-### Deployment
+Puedes consultar:
 
-Using SSH:
+- http://localhost:3000/
+- http://localhost:3000/__docusaurus/debug
 
-```
-$ USE_SSH=true yarn deploy
-```
+## Build
 
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
+``` sh
+npm run build
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Genera el sitio estático en la carpeta `.build`. Puedes usar `$ npm run serve` para servirlo en tu equipo.
+
+## Docker
+
+``` bash
+# Construye la imagen
+docker build -t wiki .
+# Arranca el docker en el puerto 8081
+docker run --rm -p 8081:80 -t wiki
+```

@@ -113,7 +113,7 @@ recomendada.
   - Podríamos haber rotado más
   - Mantuviste el foco a pesar de...
   - etc
-- Si quieres saber más acerca de cómo retroalimentar, visita la sección de [Retroalimentación entre Pares](/peer-feedback)
+- Si quieres saber más acerca de cómo retroalimentar, visita la sección de [Retroalimentación entre Pares](blog/peer-feedback)
 
 :::
 
