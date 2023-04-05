@@ -22,7 +22,7 @@ const getConfig = async () => {
     url: 'https://your-docusaurus-test-site.com',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
-    baseUrl: '/wiki',
+    baseUrl: '/',
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
@@ -73,7 +73,7 @@ const getConfig = async () => {
               'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
             remarkPlugins: [math],
             rehypePlugins: [katex]
-  
+
           },
           theme: {
             customCss: require.resolve('./src/css/custom.css'),
@@ -100,7 +100,7 @@ const getConfig = async () => {
               position: 'left',
               label: 'Wiki',
             },
-            {to: '/blog', label: 'Blog', position: 'left'},
+            { to: '/blog', label: 'Blog', position: 'left' },
             {
               href: 'https://github.com/facebook/docusaurus',
               label: 'GitHub',

@@ -1,0 +1,14 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "wiki-pre-prod"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-14sifjn00kybq"
+s3_prefix = "wiki-pre-prod"
+region = "us-east-1"
+profile = "bankingbox"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+parameter_overrides = "env=\"pre-prod\" DomainName=\"bankingbox.ai\" SubDomainName=\"wiki\" BucketIndexDocument=\"index.html\" BucketErrorDocument=\"error.html\" CloudFrontDefaultRootObject=\"index.html\" HostedZoneIdProd=\"SJJSJSJSJSJSJSJ\" DefaultCachingOptimizedId=\"658327ea-f89d-4fab-a63d-7e88639e58f6\" CFDistributionPriceClass=\"PriceClass_All\""
+image_repositories = []

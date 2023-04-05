@@ -1,0 +1,194 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  bankingbox-Wiki
+
+Parameters:
+  env:
+    Type: String
+    Default: pre-prod
+    AllowedValues:
+      - pre-prod
+      - prod
+    Description: Deploy to env
+  DomainName:
+    Type: String
+    Default: bankingbox.ai
+    Description: name of the bucket
+  SubDomainName:
+    Type: String
+    Default: wiki
+    Description: subdomain name
+  BucketIndexDocument:
+    Type: String
+    Default: index.html
+    Description: Static site entry point
+  BucketErrorDocument:
+    Type: String
+    Default: error.html
+    Description: Static site error page
+  CloudFrontDefaultRootObject:
+    Type: String
+    Default: index.html
+    Description: Distribution entry point
+  HostedZoneIdProd:
+    Type: String
+    Default: "SJJSJSJSJSJSJSJ"
+    Description: Hosted zone id for prod
+  DefaultCachingOptimizedId:
+    Type: String
+    Default: 658327ea-f89d-4fab-a63d-7e88639e58f6
+  CFDistributionPriceClass:
+    Type: String
+    Default: PriceClass_All
+    AllowedValues:
+      - PriceClass_All
+      - PriceClass_100
+      - PriceClass_200
+    Description: Price class for CloudFront distribution
+
+Conditions:
+  IsPreProd:
+    Fn::Equals: [{ Ref: env }, "pre-prod"]
+  IsProd:
+    Fn::Equals: [{ Ref: env }, "prod"]
+
+Resources:
+  WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${SubDomainName}.${DomainName}-${env}"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+
+  LogBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${SubDomainName}.${DomainName}-${env}-logs"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      AccessControl: Private
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+
+  WebCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Condition: IsProd
+    Properties:
+      DomainName: !Sub "${SubDomainName}.${DomainName}"
+      SubjectAlternativeNames:
+        - !Sub "${SubDomainName}.${DomainName}"
+      ValidationMethod: DNS
+      DomainValidationOptions:
+        - DomainName: !Sub "${SubDomainName}.${DomainName}"
+          HostedZoneId: !Ref HostedZoneIdProd
+
+  CloudFrontOriginAccessIdentity:
+    Type: "AWS::CloudFront::CloudFrontOriginAccessIdentity"
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub "${SubDomainName}.${DomainName} CloudFront OAI"
+
+  WebsiteBucketS3Policy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action: "s3:GetObject"
+            Resource: !Sub "arn:aws:s3:::${WebsiteBucket}/*"
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+
+  CloudfrontDistribution:
+    Type: "AWS::CloudFront::Distribution"
+    DependsOn:
+      - WebsiteBucket
+      - LogBucket
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: !Sub "Distribution for ${SubDomainName}.${DomainName}"
+        HttpVersion: http2
+        PriceClass: !Ref CFDistributionPriceClass
+        DefaultRootObject: !Ref CloudFrontDefaultRootObject
+        Aliases: !If
+          - IsProd
+          - - !Sub "${SubDomainName}.${DomainName}"
+          - !Ref "AWS::NoValue"
+        Origins:
+          - Id: !Sub "S3-${SubDomainName}.${DomainName}"
+            DomainName: !GetAtt WebsiteBucket.DomainName
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${CloudFrontOriginAccessIdentity}"
+        DefaultCacheBehavior:
+          TargetOriginId: !Sub "S3-${SubDomainName}.${DomainName}"
+          Compress: True
+          ForwardedValues:
+            QueryString: false
+            Headers:
+              - Origin
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+        CustomErrorResponses:
+          - ErrorCode: "403"
+            ResponsePagePath: /404.html
+            ResponseCode: "404"
+            ErrorCachingMinTTL: "30"
+        ViewerCertificate: !If
+          - IsProd
+          - AcmCertificateArn: !Ref WebCertificate
+            SslSupportMethod: sni-only
+            MinimumProtocolVersion: TLSv1.2_2019
+          - !Ref "AWS::NoValue"
+        Logging:
+          IncludeCookies: false
+          Bucket: !GetAtt LogBucket.DomainName
+          Prefix: cf-logs
+
+  DNSRecordSet:
+    Type: AWS::Route53::RecordSetGroup
+    Condition: IsProd
+    Properties:
+      Comment: !Sub "DNS records for ${DomainName}"
+      HostedZoneId: !Ref HostedZoneIdProd
+      RecordSets:
+        - Name: !Sub "${SubDomainName}.${DomainName}"
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt CloudfrontDistribution.DomainName
+            EvaluateTargetHealth: false
+            HostedZoneId: Z2FDTNDATAQYW2
+
+Outputs:
+  WebsiteBucket:
+    Description: "S3 Bucket for static website content"
+    Value: !Ref WebsiteBucket
+  WebsiteLogBucket:
+    Description: S3 Bucket for logging
+    Value: !Ref LogBucket
+  CloudfrontDistributionId:
+    Description: "Cloudfront distribution for serverless website"
+    Value: !Ref CloudfrontDistribution
+  WebEndpoint:
+    Description: "Cloudfront distribution URL"
+    Value: !GetAtt CloudfrontDistribution.DomainName
